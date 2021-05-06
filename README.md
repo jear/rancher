@@ -1,5 +1,5 @@
-# Some run.ai config
+- Some run.ai config
     https://docs.run.ai/Administrator/Cluster-Setup/cluster-troubleshooting/#symptom-cluster-installation-failed-on-rancher-based-kubernetes-rke
 
-# rancher and runai 
+- rancher and runai 
     extra_args for kube-apiserver and kube-controller
