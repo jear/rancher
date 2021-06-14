@@ -14,7 +14,7 @@ https://docs.datafabric.hpe.com/62/CSIdriver/csi_installation.html
 
 https://github.com/mapr/mapr-csi/blob/master/examples/how-to-use.md
 https://github.com/mapr/mapr-csi
-
+```
 Everything base64 encoded.
 Then get password for mapr-csi user ( or hpe-csi or anything else)
 kubectl edit secrets hpe-user-secret -n hpe-csi
@@ -31,6 +31,7 @@ $ k apply -f my-secure-usersecret.yaml
 $ k apply -f my-secureticketsecret.yaml 
 $ k apply -f my-secure-sc.yaml
 $ k get sc
+```
 
 - rancher and runai 
     extra_args for kube-apiserver and kube-controller
