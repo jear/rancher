@@ -5,32 +5,34 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snaps
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
 ```
+
 Then deploy Operator
-Install with operator framework
-https://docs.datafabric.hpe.com/62/CSIdriver/csi_installing_operator.html#csi_byoc__section_mvv_5j1_w4b
+Install with operator framework 
+- https://docs.datafabric.hpe.com/62/CSIdriver/csi_installing_operator.html#csi_byoc__section_mvv_5j1_w4b
 or 
-https://docs.datafabric.hpe.com/62/CSIdriver/csi_installation.html
+- https://docs.datafabric.hpe.com/62/CSIdriver/csi_installation.html
 
 
-https://github.com/mapr/mapr-csi/blob/master/examples/how-to-use.md
-https://github.com/mapr/mapr-csi
+- https://github.com/mapr/mapr-csi/blob/master/examples/how-to-use.md
+- https://github.com/mapr/mapr-csi
+
 ```
-Everything base64 encoded.
-Then get password for mapr-csi user ( or hpe-csi or anything else)
+# Everything base64 encoded.
+# Then get password for mapr-csi user ( or hpe-csi or anything else)
 kubectl edit secrets hpe-user-secret -n hpe-csi
   MAPR_CLUSTER_PASSWORD: ZFdPakpiVEU2MQ==
   MAPR_CLUSTER_USER: azhzLTE=
 
-And CONTAINER_TICKET
+# And CONTAINER_TICKET
 kubectl edit secrets hpe-ticket-secret -n hpe-csi
   CONTAINER_TICKET: aGNwLm1hcHIuY2x1c3RlciBzVDRZVjVu...........
 
 
-Then update accordingly with examples :
-$ k apply -f my-secure-usersecret.yaml
-$ k apply -f my-secureticketsecret.yaml 
-$ k apply -f my-secure-sc.yaml
-$ k get sc
+# Then update accordingly with examples :
+k apply -f my-secure-usersecret.yaml
+k apply -f my-secureticketsecret.yaml 
+k apply -f my-secure-sc.yaml
+k get sc
 ```
 
 - rancher and runai 
