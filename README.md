@@ -19,13 +19,8 @@ or
 ```
 # Everything base64 encoded.
 # Then get password for mapr-csi user ( or hpe-csi or anything else)
-kubectl edit secrets hpe-user-secret -n hpe-csi
-  MAPR_CLUSTER_PASSWORD: ZFdPakpiVEU2MQ==
-  MAPR_CLUSTER_USER: azhzLTE=
+# And CONTAINER_TICKET  using maprlogin cmd which is available inside mapr container.
 
-# And CONTAINER_TICKET
-kubectl edit secrets hpe-ticket-secret -n hpe-csi
-  CONTAINER_TICKET: aGNwLm1hcHIuY2x1c3RlciBzVDRZVjVu...........
 
 
 # Then update accordingly with examples :
