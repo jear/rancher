@@ -1,4 +1,26 @@
-  554  docker ps
+
+RANCHER_DOCKER_ID=`docker ps -aq`
+echo $RANCHER_DOCKER_ID
+
+docker stop $RANCHER_DOCKER_ID
+
+MY_DATE=`date +%F`
+echo $MY_DATE 
+
+OLD_VER=v2.9.2
+NEW_VER=v2.10.0
+
+docker create --volumes-from $RANCHER_DOCKER_ID --name rancher-data-$OLD_VER-$MY_DATE rancher/rancher:$OLD_VER
+
+docker run --volumes-from rancher-data-$OLD_VER-$MY_DATE -v "$PWD:/backup" --rm busybox tar zcvf /backup/rancher-data-backup-$OLD_VER-$MY_DATE.tar.gz /var/lib/rancher
+
+docker run -d --volumes-from rancher-data-$OLD_VER-$MY_DATE --restart=unless-stopped   -p 80:80 -p 443:443   --privileged   rancher/rancher:$NEW_VER
+
+docker ps
+docker logs a1f77cc88b38 -f
+
+
+554  docker ps
   557  docker stop b2993e9d092d
   558  docker create --volumes-from pedantic_kowalevski --name rancher-data-v2.8.1-20240326 rancher/rancher:v2.8.1
   559  docker run --volumes-from rancher-data-v2.8.1-20240326 -v "$PWD:/backup" --rm busybox tar zcvf /backup/rancher-data-backup-v2.8.1-20240326.tar.gz /var/lib/rancher
