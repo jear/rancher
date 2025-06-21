@@ -1,5 +1,7 @@
 # my single containerRancher upgrade
 
+# https://github.com/rancher/rancher/releases?q=latest&expanded=true
+
 RANCHER_DOCKER_ID=`docker ps -aq`
 echo $RANCHER_DOCKER_ID
 
