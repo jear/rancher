@@ -2,7 +2,7 @@
 
 # https://github.com/rancher/rancher/releases?q=latest&expanded=true
 
-RANCHER_DOCKER_ID=`docker ps -aq`
+RANCHER_DOCKER_ID=`docker ps -q`
 echo $RANCHER_DOCKER_ID
 
 docker stop $RANCHER_DOCKER_ID
@@ -19,6 +19,8 @@ docker run --volumes-from rancher-data-$OLD_VER-$MY_DATE -v "$PWD:/backup" --rm 
 
 docker run -d --volumes-from rancher-data-$OLD_VER-$MY_DATE --restart=unless-stopped   -p 80:80 -p 443:443   --privileged   rancher/rancher:$NEW_VER
 
-docker ps
-docker logs a1f77cc88b38 -f
+NEW_RANCHER_DOCKER_ID=`docker ps -q`
+echo $NEW_RANCHER_DOCKER_ID
+
+docker logs $NEW_RANCHER_DOCKER_ID -f
 
